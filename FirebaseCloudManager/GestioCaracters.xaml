@@ -33,6 +33,7 @@
 
             <Button x:Name="UploadFileButton" Content="SAVE" Foreground="DarkBlue" Background="Aqua" Margin="15,0,15,5"/>
         </StackPanel>
+        
     </Grid>
 
 </Window>

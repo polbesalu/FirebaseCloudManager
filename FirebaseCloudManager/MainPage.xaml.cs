@@ -1,5 +1,4 @@
-﻿using Firebase.Auth.UI.Pages;
-using Firebase.Auth.UI;
+﻿using Firebase.Auth.UI;
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
@@ -19,34 +18,39 @@ using System.Windows.Shapes;
 namespace FirebaseCloudManager
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
+
             FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
         }
 
         private void AuthStateChanged(object sender, UserEventArgs e)
         {
+            var user = e.User;
+
             Application.Current.Dispatcher.Invoke(() =>
             {
-                if (e.User == null)
+                this.UidTextBlock.Text = user.Uid;
+                this.NameTextBlock.Text = user.Info.DisplayName;
+                this.EmailTextBlock.Text = user.Info.Email;
+                this.ProviderTextBlock.Text = user.Credential.ProviderType.ToString();
+
+                if (!string.IsNullOrWhiteSpace(user.Info.PhotoUrl))
                 {
-                    //await FirebaseUI.Instance.Client.SignInAnonymouslyAsync();
-                    this.Frame.Navigate(new LoginPage());
-                }
-                else if (e.User.IsAnonymous)
-                {
-                    this.Frame.Navigate(new LoginPage());
-                }
-                else if ((this.Frame.Content == null || this.Frame.Content.GetType() != typeof(MainPage)))
-                {
-                    this.Frame.Navigate(new MainPage());
+                    this.ProfileImage.Source = new BitmapImage(new Uri(user.Info.PhotoUrl));
                 }
             });
+        }
+
+        private void SignOutClick(object sender, RoutedEventArgs e)
+        {
+            FirebaseUI.Instance.Client.AuthStateChanged -= this.AuthStateChanged;
+            FirebaseUI.Instance.Client.SignOut();
         }
     }
 }

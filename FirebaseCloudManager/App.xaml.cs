@@ -27,8 +27,8 @@ namespace FirebaseCloudManager
             FirebaseUI.Initialize(new FirebaseUIConfig
             {
                 //Cambiar ApiKey
-                ApiKey = "ygXv79yeunqsoI8YSirXyskeIx7EHyQq2_9gAYnHPmo",
-                AuthDomain = "provafirebase-e63fd.firebaseapp.com",
+                ApiKey = "AIzaSyDjDnzwMC8G-UZPjQgANh7v0t5tuEcKlbY",
+                AuthDomain = "provafirebase-e63fd.firebaseapp.com\t",
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider(),
