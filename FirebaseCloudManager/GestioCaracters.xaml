@@ -1,4 +1,4 @@
-﻿<Window x:Class="FirebaseCloudManager.GestioCaracters"
+﻿<Page x:Class="FirebaseCloudManager.GestioCaracters"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -32,8 +32,19 @@
             <TextBox x:Name="FileUploadTextBox" Margin="15,0,15,15"/>
 
             <Button x:Name="UploadFileButton" Content="SAVE" Foreground="DarkBlue" Background="Aqua" Margin="15,0,15,5"/>
+            <Button x:Name="SignOut" Click="SignOut_Click" Content="SIGN OUT" Foreground="LightYellow" Background="Black" Margin="15,5,15,5"/>
         </StackPanel>
-        
+
+        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.ColumnSpan="2" Margin="15" AutoGenerateColumns="False" Background="Coral" Foreground="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Character Name" Binding="{Binding CharacterName}"/>
+                <DataGridTextColumn Header="Character TV Show" Binding="{Binding CharacterTVShow}"/>
+                <DataGridTextColumn Header="Character Description" Binding="{Binding CharacterDescription}"/>
+                <DataGridTextColumn Header="File Upload Date" Binding="{Binding FileUploadDate}"/>
+                <DataGridTextColumn Header="File Upload" Binding="{Binding FileUpload}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 
-</Window>
+</Page>

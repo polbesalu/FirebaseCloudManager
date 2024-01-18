@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Firebase.Auth.UI;
+using Firebase.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +19,17 @@ namespace FirebaseCloudManager
     /// <summary>
     /// Lógica de interacción para GestioCaracters.xaml
     /// </summary>
-    public partial class GestioCaracters : Window
+    public partial class GestioCaracters : Page
     {
         public GestioCaracters()
         {
             InitializeComponent();
+        }
+
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new MainPage();
+            this.NavigationService.Navigate(page);
         }
     }
 }

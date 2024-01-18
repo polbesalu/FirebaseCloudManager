@@ -29,7 +29,7 @@ namespace FirebaseCloudManager
             FirebaseUI.Instance.Client.AuthStateChanged += this.AuthStateChanged;
         }
 
-        private void AuthStateChanged(object sender, UserEventArgs e)
+        public void AuthStateChanged(object sender, UserEventArgs e)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -44,7 +44,7 @@ namespace FirebaseCloudManager
                 }
                 else if ((this.Frame.Content == null || this.Frame.Content.GetType() != typeof(MainPage)))
                 {
-                    this.Frame.Navigate(new MainPage());
+                    this.Frame.Navigate(new GestioCaracters());
                 }
             });
         }
