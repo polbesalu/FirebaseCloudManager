@@ -1,4 +1,5 @@
 ﻿using Firebase.Database;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace FirebaseCloudManager
         private readonly FirebaseClient firebaseClient;
         public CharacterService()
         {
-            firebaseClient = ClientCreator.GetFirebaseClient(FirebaseDatabaseUrl, "2Ex9nEJ9vIcm4j8gB9SNN5e0Hb33");
+            firebaseClient = GetFirebaseClient(FirebaseDatabaseUrl, "2Ex9nEJ9vIcm4j8gB9SNN5e0Hb33");
         }
         public async Task AddCharacter(Character character)
         {
