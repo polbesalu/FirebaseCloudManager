@@ -21,6 +21,7 @@ namespace FirebaseCloudManager
     /// </summary>
     public partial class GestioCaracters : Page
     {
+        new CharacterService characterService = new CharacterService();
         public GestioCaracters()
         {
             InitializeComponent();
@@ -30,6 +31,26 @@ namespace FirebaseCloudManager
         {
             var page = new MainPage();
             this.NavigationService.Navigate(page);
+        }
+
+        private void UploadFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            /*Character character = new Character(
+                CharacterNameTextBox.Text, 
+                CharacterTVShowTextBox.Text, 
+                CharacterDescriptionTextBox.Text, 
+                FileUploadDatePicker.Text, 
+                FileUploadTextBox.Text);*/
+
+            characterService.AddCharacter(new Character(
+                CharacterNameTextBox.Text,
+                CharacterTVShowTextBox.Text,
+                CharacterDescriptionTextBox.Text,
+                FileUploadDatePicker.Text,
+                FileUploadTextBox.Text)
+            );
+
+            DataGrid.ItemsSource = characterService.GetAllCharacters();
         }
     }
 }

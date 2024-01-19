@@ -10,21 +10,21 @@ namespace FirebaseCloudManager
 {
     class CharacterService
     {
-        private const string FirebaseDatabaseUrl = "https://provadam-15e08-default-rtdb.europe-west1.firebasedatabase.app/";
-        private readonly FirebaseClient firebaseClient;
+        private const string FirebaseDatabaseUrl = "https://provafirebase-e63fd-default-rtdb.europe-west1.firebasedatabase.app/";
+        private readonly FirebaseClient firebaseUser;
         public CharacterService()
         {
-            firebaseClient = GetFirebaseClient(FirebaseDatabaseUrl, "2Ex9nEJ9vIcm4j8gB9SNN5e0Hb33");
+            firebaseUser = GetFirebaseUser(FirebaseDatabaseUrl, "2Ex9nEJ9vIcm4j8gB9SNN5e0Hb33");
         }
         public async Task AddCharacter(Character character)
         {
-            await firebaseClient
+            await firebaseUser
             .Child("Characters")
             .PostAsync(character);
         }
         public async Task<List<Character>> GetCharacters()
         {
-            var characters = await firebaseClient.Child("Characters").OnceAsync<Character>();
+            var characters = await firebaseUser.Child("Characters").OnceAsync<Character>();
             foreach (var character in characters)
             {
                 character.Object.Nom = character.Key;
@@ -35,7 +35,7 @@ namespace FirebaseCloudManager
         {
             return GetCharacters().Result;
         }
-        public static FirebaseClient GetFirebaseClient(string url, string secret = null)
+        public static FirebaseClient GetFirebaseUser(string url, string secret = null)
         {
             return new FirebaseClient(url, new FirebaseOptions
             {

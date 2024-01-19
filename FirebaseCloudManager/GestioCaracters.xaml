@@ -31,7 +31,7 @@
             <TextBlock Text="Choose File to Upload:" Foreground="DarkBlue" Margin="15,0,15,2"/>
             <TextBox x:Name="FileUploadTextBox" Margin="15,0,15,15"/>
 
-            <Button x:Name="UploadFileButton" Content="SAVE" Foreground="DarkBlue" Background="Aqua" Margin="15,0,15,5"/>
+            <Button x:Name="UploadFileButton" Content="SAVE" Click="UploadFileButton_Click" Foreground="DarkBlue" Background="Aqua" Margin="15,0,15,5"/>
             <Button x:Name="SignOut" Click="SignOut_Click" Content="SIGN OUT" Foreground="LightYellow" Background="Black" Margin="15,5,15,5"/>
         </StackPanel>
 
