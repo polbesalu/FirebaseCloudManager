@@ -35,6 +35,10 @@ namespace FirebaseCloudManager
 
         private void UploadFileButton_Click(object sender, RoutedEventArgs e)
         {
+            UploadFileButton_ClickAsync(sender, e);
+        }
+        private async Task UploadFileButton_ClickAsync(object sender, RoutedEventArgs e)
+        {
             /*Character character = new Character(
                 CharacterNameTextBox.Text, 
                 CharacterTVShowTextBox.Text, 
@@ -42,7 +46,7 @@ namespace FirebaseCloudManager
                 FileUploadDatePicker.Text, 
                 FileUploadTextBox.Text);*/
 
-            characterService.AddCharacter(new Character(
+            await characterService.AddCharacter(new Character(
                 CharacterNameTextBox.Text,
                 CharacterTVShowTextBox.Text,
                 CharacterDescriptionTextBox.Text,
